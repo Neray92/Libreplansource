@@ -20,6 +20,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
+            <pluginManagement>
                 <plugins>
                     <!-- =========================================================== -->
                     <!-- Jasper reports configuration -->
@@ -72,6 +73,8 @@
                         </executions>
                     </plugin>
                 </plugins>
+             
+            </pluginManagement>
             </build>
         </profile>
 
@@ -81,6 +84,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
+            <pluginManagement>
                 <plugins>
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
@@ -210,6 +214,7 @@
                         </executions>
                     </plugin>
                 </plugins>
+               </pluginManagement>
             </build>
         </profile>
 
@@ -225,6 +230,7 @@
                             merge: parses source code and generates keys.pot
                             dist: generates binary Resoruce Bundle (Messages_XX.class)
                 -->
+                <pluginManagement>
                 <plugins>
                     <plugin>
                         <groupId>com.googlecode.gettext-commons</groupId>
@@ -244,12 +250,48 @@
                         </executions>
                     </plugin>
                 </plugins>
+               </pluginManagement>
             </build>
         </profile>
     </profiles>
 
     <build>
         <finalName>libreplan-webapp</finalName>
+        <pluginManagement>
+        	<plugins>
+        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        		<plugin>
+        			<groupId>org.eclipse.m2e</groupId>
+        			<artifactId>lifecycle-mapping</artifactId>
+        			<version>1.0.0</version>
+        			<configuration>
+        				<lifecycleMappingMetadata>
+        					<pluginExecutions>
+        						<pluginExecution>
+        							<pluginExecutionFilter>
+        								<groupId>
+        									com.googlecode.gettext-commons
+        								</groupId>
+        								<artifactId>
+        									gettext-maven-plugin
+        								</artifactId>
+        								<versionRange>
+        									[1.2.4,)
+        								</versionRange>
+        								<goals>
+        									<goal>dist</goal>
+        								</goals>
+        							</pluginExecutionFilter>
+        							<action>
+        								<ignore></ignore>
+        							</action>
+        						</pluginExecution>
+        					</pluginExecutions>
+        				</lifecycleMappingMetadata>
+        			</configuration>
+        		</plugin>
+        	</plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
@@ -496,5 +538,13 @@
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.codehaus.plexus/plexus-utils -->
+		<dependency>
+		    <groupId>org.codehaus.plexus</groupId>
+		    <artifactId>plexus-utils</artifactId>
+		    <version>1.5.7</version>
+		</dependency>
+        
     </dependencies>
 </project>

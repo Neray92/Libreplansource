@@ -133,7 +133,7 @@
             <artifactId>joda-time</artifactId>
         </dependency>
 
-        <!-- Liquibase -->
+        <!-- Liquibase 
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
@@ -142,13 +142,14 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-maven-plugin</artifactId>
         </dependency>
+		-->
 
     </dependencies>
 
     <profiles>
-
+<!--
         <profile>
-            <!-- LiquiBase liquibase:update -->
+             LiquiBase liquibase:update 
             <id>liquibase-update</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -174,10 +175,13 @@
                     </plugin>
                 </plugins>
             </build>
+			
         </profile>
-
+			-->	
+			
+			<!--
         <profile>
-            <!-- LiquiBase liquibase:updateSQL -->
+             LiquiBase liquibase:updateSQL 
             <id>liquibase-updatesql</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -203,8 +207,9 @@
                     </plugin>
                 </plugins>
             </build>
+			
         </profile>
-
+			-->	
     </profiles>
 
     <build>
